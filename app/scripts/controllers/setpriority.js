@@ -35,6 +35,21 @@ angular.module('ionicFirebaseApp')
 		var test = new Firebase('https://cm-restaurant.firebaseio.com/questions/-JlyInXsmBVvWxx62NFI')
 		test.setPriority(4441);
 
+		sp.click = function(id) {
+			sp.syncQuestions.$save(id)
+			.then(function(ref) {
+				console.log( ref.key())
+			  	ref.key() === sp.syncQuestions[2].$id; // true
+			  	
+			  	sp.rank = sp.syncQuestions[id].user.rank;
+			  	
+			  	console.log(sp.rank)
+			  	ref.setPriority(sp.rank);
+			}, function(error) {
+			  console.log("Error:", error);
+			});
+		};
+
 		sp.setRandom = function() {
 			var dirget = Math.floor((Math.random() * 10) );
 			var tensDirget = Math.floor((Math.random() * 10) );

@@ -40,7 +40,8 @@
 	      	</ion-item>
 
 	      	<ion-item class="item-icon-right row"  
-	      			ng-repeat="(id, question) in sp.syncQuestions">
+	      			ng-repeat="(id, question) in sp.syncQuestions"
+	      			ng-click="sp.click(id)">
 				<div class="col col-33">{{question.user.firstName}}</div>
 				<div class="col col-33">{{question.user.lastName}}	</div>
 				<div class="col col-33">{{question.user.rank}}	</div>
