@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('IonicFirebase', ['ionic', 'config', 'IonicFirebase.controllers'])
+angular.module('ionicFirebaseApp', ['ionic', 'config', 'IonicFirebase.controllers','firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -41,6 +41,26 @@ angular.module('IonicFirebase', ['ionic', 'config', 'IonicFirebase.controllers']
       }
     })
 
+    .state('app.firebase', {
+      url: '/firebase',
+      views: {
+        'menuContent' :{
+          templateUrl: 'views/firebase.html',
+          controller: 'FirebaseCtrl as fc'
+        }
+      }
+    })
+
+    .state('app.setPriority', {
+      url: '/setPriority',
+      views: {
+        'menuContent' :{
+          templateUrl: 'views/setPriority.html',
+          controller: 'SetpriorityCtrl as sp'
+        }
+      }
+    })
+
     .state('app.browse', {
       url: '/browse',
       views: {
@@ -69,6 +89,6 @@ angular.module('IonicFirebase', ['ionic', 'config', 'IonicFirebase.controllers']
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/firebase');
 });
 
